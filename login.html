@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#08080a" />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<title>Log in — Crescendo</title>
+<link rel="stylesheet" href="/auth.css" />
+<style>
+.shell{position:relative;z-index:5;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
+.toplogo{position:absolute;top:26px;left:clamp(20px,5vw,56px)}
+.auth{width:100%;max-width:412px;padding:38px 34px}
+.auth .head{text-align:center;margin-bottom:26px}
+.auth .head .mk{width:46px;height:46px;margin:0 auto 18px;display:block;overflow:visible}
+.auth .head h1{font-size:25px;font-weight:800;letter-spacing:-.01em}
+.auth .head p{color:var(--faint);font-size:14px;margin-top:7px}
+.flabel-row{display:flex;align-items:center;justify-content:space-between}
+.flabel-row a{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--pink)}
+.flabel-row a:hover{text-decoration:underline}
+.err{display:none;background:rgba(255,90,77,.1);border:1px solid rgba(255,90,77,.35);color:#ff9a90;
+  font-size:13px;padding:10px 13px;border-radius:10px;margin-bottom:14px}
+.err.show{display:block}
+.alt{text-align:center;margin-top:22px;color:var(--faint);font-size:14px}
+.alt a{color:#fff;font-weight:700}
+.alt a:hover{color:var(--pink)}
+.divider-or{display:flex;align-items:center;gap:14px;margin:22px 0;color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+.divider-or::before,.divider-or::after{content:"";flex:1;height:1px;background:var(--border)}
+.demo-note{position:absolute;bottom:22px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#5e5e66}
+.hm-halo{filter:blur(5px)}
+.hm-halo line{stroke:#ff2d9b;stroke-width:9;stroke-linecap:round;opacity:.45}
+.hm-core line{stroke:url(#lgGrad);stroke-width:7;stroke-linecap:round}
+</style>
+</head>
+<body>
+<div class="ambient"><i class="a1"></i><i class="a2"></i></div>
+<div class="grain"></div>
+<div class="cursor-dot" id="cdot"></div>
+
+<div class="shell">
+  <a class="logo toplogo" href="/" aria-label="Crescendo home">
+    <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"><line x1="17.3" y1="59.2" x2="37.6" y2="38.8"/><line x1="17.8" y1="76.9" x2="52.4" y2="42.2"/><line x1="35" y1="77.7" x2="82.1" y2="30.5"/><line x1="54.2" y1="79.2" x2="78.1" y2="55.5"/><line x1="55.5" y1="32.6" x2="61.7" y2="26.3"/><line x1="78.2" y1="20.4" x2="85" y2="13.6"/></svg>
+    CRESCENDO
+  </a>
+
+  <section class="glass auth rise">
+    <div class="head">
+      <svg class="mk" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+        <defs><linearGradient id="lgGrad" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#ff2d9b"/><stop offset="1" stop-color="#ff6a3d"/></linearGradient></defs>
+        <g class="hm-halo"><line x1="17.3" y1="59.2" x2="37.6" y2="38.8"/><line x1="17.8" y1="76.9" x2="52.4" y2="42.2"/><line x1="35" y1="77.7" x2="82.1" y2="30.5"/><line x1="54.2" y1="79.2" x2="78.1" y2="55.5"/><line x1="55.5" y1="32.6" x2="61.7" y2="26.3"/><line x1="78.2" y1="20.4" x2="85" y2="13.6"/></g>
+        <g class="hm-core"><line x1="17.3" y1="59.2" x2="37.6" y2="38.8"/><line x1="17.8" y1="76.9" x2="52.4" y2="42.2"/><line x1="35" y1="77.7" x2="82.1" y2="30.5"/><line x1="54.2" y1="79.2" x2="78.1" y2="55.5"/><line x1="55.5" y1="32.6" x2="61.7" y2="26.3"/><line x1="78.2" y1="20.4" x2="85" y2="13.6"/></g>
+      </svg>
+      <h1>Welcome back</h1>
+      <p>Log in to your Crescendo workspace.</p>
+    </div>
+    <div class="err" id="err">Hmm, that doesn't match an account. Check your email and password.</div>
+    <form id="loginForm" novalidate>
+      <div class="field">
+        <label for="email">Email</label>
+        <input id="email" type="email" inputmode="email" placeholder="you@label.com" autocomplete="email" required />
+      </div>
+      <div class="field">
+        <div class="flabel-row"><label for="pw">Password</label><a href="#" id="forgot">Forgot?</a></div>
+        <input id="pw" type="password" placeholder="••••••••" autocomplete="current-password" required />
+      </div>
+      <button class="btn btn-primary btn-block btn-lg" id="loginBtn" type="submit">Log in</button>
+    </form>
+    <div class="alt">New to Crescendo? <a href="/#pricing">Start free</a></div>
+  </section>
+  <div class="demo-note">Demo login · any email + password works</div>
+</div>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var form=document.getElementById('loginForm'), btn=document.getElementById('loginBtn'), err=document.getElementById('err');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=document.getElementById('email'), pw=document.getElementById('pw');
+    err.classList.remove('show');
+    var ok=true;
+    [email,pw].forEach(function(el){if(!el.value.trim()){el.classList.add('invalid');ok=false;}else el.classList.remove('invalid');});
+    if(!ok){return;}
+    btn.disabled=true; btn.innerHTML='<span class="spin"></span> Signing in…';
+    setTimeout(function(){
+      try{sessionStorage.setItem('cresc_user',email.value.trim());}catch(e){}
+      location.href='/app.html';
+    }, reduce?150:1200);
+  });
+  document.getElementById('forgot').addEventListener('click',function(e){e.preventDefault();alert('Demo: password reset would be emailed to you.');});
+  form.addEventListener('input',function(e){if(e.target.classList)e.target.classList.remove('invalid');err.classList.remove('show');});
+
+  if(!reduce && matchMedia('(pointer:fine)').matches){
+    var dot=document.getElementById('cdot');
+    addEventListener('mousemove',function(e){dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';dot.style.opacity='1';},{passive:true});
+    addEventListener('mouseout',function(){dot.style.opacity='0';});
+  }
+})();
+</script>
+</body>
+</html>

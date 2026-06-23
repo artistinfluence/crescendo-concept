@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#08080a" />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<title>Dashboard — Crescendo</title>
+<link rel="stylesheet" href="/auth.css" />
+<style>
+.appbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:18px;padding:14px clamp(16px,3vw,30px);
+  background:rgba(10,10,12,.72);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.appbar .logo{font-size:14px}
+.ws{display:inline-flex;align-items:center;gap:8px;padding:6px 11px;border-radius:9px;background:var(--surface-2);border:1px solid var(--border);
+  font-size:12.5px;font-weight:600}
+.ws i{width:7px;height:7px;border-radius:2px;background:var(--grad);display:block}
+.appnav{display:flex;gap:4px;margin-left:8px}
+.appnav a{padding:8px 13px;border-radius:9px;font-size:13.5px;color:var(--faint);font-weight:600}
+.appnav a.on{background:var(--surface-2);color:#fff}
+.appnav a:hover{color:#fff}
+.appbar .right{margin-left:auto;display:flex;align-items:center;gap:14px}
+.who{display:flex;align-items:center;gap:9px}
+.who .av{width:30px;height:30px;border-radius:50%;background:var(--grad-135);display:grid;place-items:center;font-weight:800;font-size:13px;color:#fff}
+.who .em{font-size:13px;color:var(--muted);max-width:170px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.logout{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);cursor:pointer}
+.logout:hover{color:#fff}
+@media (max-width:720px){.appnav,.who .em{display:none}}
+
+main{position:relative;z-index:5;max-width:1120px;margin:0 auto;padding:26px clamp(16px,3vw,30px) 80px}
+.demo-banner{display:flex;align-items:center;gap:10px;padding:11px 15px;border-radius:12px;margin-bottom:24px;
+  background:rgba(255,45,120,.08);border:1px solid rgba(255,45,120,.22);font-size:13px;color:#ffd0e2}
+.demo-banner b{color:#fff}
+.greet h1{font-size:clamp(24px,3.4vw,32px);font-weight:800;letter-spacing:-.02em}
+.greet p{color:var(--faint);margin-top:6px;font-size:14px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}
+@media (max-width:860px){.kpis{grid-template-columns:repeat(2,1fr)}}
+.kpi{padding:20px}
+.kpi .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+.kpi .val{font-size:30px;font-weight:800;letter-spacing:-.02em;margin-top:9px}
+.kpi .delta{font-size:12px;font-family:var(--mono);margin-top:6px}
+.kpi .delta.up{color:var(--green)} .kpi .delta.dn{color:#ff7a6e}
+.panel{padding:24px;margin-bottom:18px}
+.panel .ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.panel .ph h2{font-size:16px;font-weight:800}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--faint);font-family:var(--mono)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px;vertical-align:middle}
+.chart{width:100%;height:auto;display:block}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{text-align:left;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+  font-weight:500;padding:0 12px 12px;border-bottom:1px solid var(--border)}
+tbody td{padding:14px 12px;border-bottom:1px solid var(--border)}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:var(--surface-1)}
+.camp{font-weight:700}
+.plats{color:var(--faint);font-family:var(--mono);font-size:12px}
+.lift{color:var(--green);font-weight:700;font-family:var(--mono)}
+.tag{display:inline-block;padding:4px 10px;border-radius:999px;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase}
+.tag.active{background:rgba(30,215,96,.12);color:#7ef0ab;border:1px solid rgba(30,215,96,.3)}
+.tag.wrap{background:rgba(255,255,255,.06);color:var(--faint);border:1px solid var(--border-2)}
+td.num{font-family:var(--mono)}
+@media (max-width:680px){.hide-sm{display:none}}
+</style>
+</head>
+<body>
+<div class="ambient"><i class="a1"></i><i class="a2"></i></div>
+<div class="grain"></div>
+<div class="cursor-dot" id="cdot"></div>
+
+<header class="appbar">
+  <a class="logo" href="/" aria-label="Crescendo home">
+    <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"><line x1="17.3" y1="59.2" x2="37.6" y2="38.8"/><line x1="17.8" y1="76.9" x2="52.4" y2="42.2"/><line x1="35" y1="77.7" x2="82.1" y2="30.5"/><line x1="54.2" y1="79.2" x2="78.1" y2="55.5"/><line x1="55.5" y1="32.6" x2="61.7" y2="26.3"/><line x1="78.2" y1="20.4" x2="85" y2="13.6"/></svg>
+    CRESCENDO
+  </a>
+  <span class="ws"><i></i> Demo Workspace</span>
+  <nav class="appnav">
+    <a class="on" href="#">Overview</a><a href="#">Campaigns</a><a href="#">Creators</a><a href="#">Reports</a>
+  </nav>
+  <div class="right">
+    <div class="who"><span class="av" id="avatar">D</span><span class="em" id="userEmail">demo@label.com</span></div>
+    <span class="logout" id="logout">Log out</span>
+  </div>
+</header>
+
+<main>
+  <div class="demo-banner rise"><b>Demo workspace.</b> Numbers are illustrative, no live data is connected.</div>
+
+  <div class="greet rise d1">
+    <h1>Welcome back 👋</h1>
+    <p id="sub">Here's how your active campaigns are tracking today.</p>
+  </div>
+
+  <div class="kpis">
+    <div class="glass kpi rise d1"><div class="lab">Active campaigns</div><div class="val">14</div><div class="delta up">▲ 3 this week</div></div>
+    <div class="glass kpi rise d1"><div class="lab">UGC posts tracked</div><div class="val">3,481</div><div class="delta up">▲ 12.4% vs last wk</div></div>
+    <div class="glass kpi rise d2"><div class="lab">Streaming lift</div><div class="val">+312%</div><div class="delta up">▲ since first post</div></div>
+    <div class="glass kpi rise d2"><div class="lab">Avg. relevance</div><div class="val">87%</div><div class="delta up">▲ 4 pts</div></div>
+  </div>
+
+  <section class="glass panel rise d2">
+    <div class="ph">
+      <h2>UGC vs streaming · last 90 days</h2>
+      <div class="legend"><span><i style="background:#ff2d9b"></i>UGC views</span><span><i style="background:#1ed760"></i>Streams</span></div>
+    </div>
+    <svg class="chart" id="dchart" viewBox="0 0 640 240" fill="none" preserveAspectRatio="none" aria-hidden="true">
+      <defs>
+        <linearGradient id="dUg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff2d9b" stop-opacity=".34"/><stop offset="1" stop-color="#ff2d9b" stop-opacity="0"/></linearGradient>
+        <linearGradient id="dSt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1ed760" stop-opacity=".26"/><stop offset="1" stop-color="#1ed760" stop-opacity="0"/></linearGradient>
+      </defs>
+      <g stroke="rgba(150,160,210,.09)" stroke-width="1">
+        <line x1="0" y1="60" x2="640" y2="60"/><line x1="0" y1="120" x2="640" y2="120"/><line x1="0" y1="180" x2="640" y2="180"/>
+      </g>
+      <path id="dFillU" fill="url(#dUg)"/><path id="dFillS" fill="url(#dSt)"/>
+      <path id="dLineS" fill="none" stroke="#1ed760" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <path id="dLineU" fill="none" stroke="#ff2d9b" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </section>
+
+  <section class="glass panel rise d3">
+    <div class="ph"><h2>Active campaigns</h2></div>
+    <table>
+      <thead><tr><th>Campaign</th><th class="hide-sm">Platforms</th><th>Posts</th><th class="hide-sm">Streams</th><th>Lift</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td class="camp">Midnight Drive — Single push</td><td class="plats hide-sm">TikTok · IG · YT</td><td class="num">842</td><td class="num hide-sm">1.2M</td><td class="lift">+418%</td><td><span class="tag active">Active</span></td></tr>
+        <tr><td class="camp">Neon Avenue — Album rollout</td><td class="plats hide-sm">TikTok · IG · X</td><td class="num">1,107</td><td class="num hide-sm">2.9M</td><td class="lift">+287%</td><td><span class="tag active">Active</span></td></tr>
+        <tr><td class="camp">WONDERLI — Clipping pool</td><td class="plats hide-sm">TikTok · YT</td><td class="num">643</td><td class="num hide-sm">740K</td><td class="lift">+356%</td><td><span class="tag active">Active</span></td></tr>
+        <tr><td class="camp">EDM Collective — Remix drop</td><td class="plats hide-sm">TikTok · IG</td><td class="num">512</td><td class="num hide-sm">980K</td><td class="lift">+203%</td><td><span class="tag active">Active</span></td></tr>
+        <tr><td class="camp">Records — Catalog warm-up</td><td class="plats hide-sm">IG · SoundCloud</td><td class="num">377</td><td class="num hide-sm">410K</td><td class="lift">+142%</td><td><span class="tag wrap">Wrapping</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  // greet by logged-in email
+  var email='demo@label.com';
+  try{ email=sessionStorage.getItem('cresc_user')||email; }catch(e){}
+  document.getElementById('userEmail').textContent=email;
+  document.getElementById('avatar').textContent=(email[0]||'D').toUpperCase();
+  document.getElementById('logout').addEventListener('click',function(){try{sessionStorage.removeItem('cresc_user');}catch(e){} location.href='/';});
+
+  // static smooth dual-line chart
+  var W=640,H=240,top=22,bot=26,N=42;
+  function valU(i){return i*0.62 + 8*Math.sin(i*0.42+0.4) + 3.4*Math.sin(i*1.05+1);}
+  function valS(i){var j=i-2;return j*0.62 + 6.6*Math.sin(j*0.42+0.4) + 2.8*Math.sin(j*1.05+1) - 7;}
+  function smooth(p){var d='M'+p[0][0]+' '+p[0][1];for(var i=0;i<p.length-1;i++){var a=p[i-1]||p[i],b=p[i],c=p[i+1],e=p[i+2]||c;
+    d+=' C'+(b[0]+(c[0]-a[0])/6).toFixed(1)+' '+(b[1]+(c[1]-a[1])/6).toFixed(1)+' '+(c[0]-(e[0]-b[0])/6).toFixed(1)+' '+(c[1]-(e[1]-b[1])/6).toFixed(1)+' '+c[0].toFixed(1)+' '+c[1].toFixed(1);}return d;}
+  var uu=[],sv=[],i;
+  for(i=0;i<N;i++){uu.push(valU(i));sv.push(valS(i));}
+  var all=uu.concat(sv),mn=Math.min.apply(null,all),mx=Math.max.apply(null,all),rg=(mx-mn)||1;mn-=rg*0.12;mx+=rg*0.14;rg=mx-mn;
+  function Y(v){return +(top+(1-(v-mn)/rg)*(H-top-bot)).toFixed(1);}
+  var pu=[],ps=[];for(i=0;i<N;i++){var x=+((i/(N-1))*W).toFixed(1);pu.push([x,Y(uu[i])]);ps.push([x,Y(sv[i])]);}
+  var du=smooth(pu),ds=smooth(ps);
+  document.getElementById('dLineU').setAttribute('d',du);
+  document.getElementById('dLineS').setAttribute('d',ds);
+  document.getElementById('dFillU').setAttribute('d',du+' L'+W+' '+H+' L0 '+H+' Z');
+  document.getElementById('dFillS').setAttribute('d',ds+' L'+W+' '+H+' L0 '+H+' Z');
+
+  if(!reduce && matchMedia('(pointer:fine)').matches){
+    var dot=document.getElementById('cdot');
+    addEventListener('mousemove',function(e){dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';dot.style.opacity='1';},{passive:true});
+    addEventListener('mouseout',function(){dot.style.opacity='0';});
+  }
+})();
+</script>
+</body>
+</html>
