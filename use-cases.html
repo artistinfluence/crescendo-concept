@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#08080a" />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<title>Use cases — Crescendo</title>
+<link rel="stylesheet" href="/auth.css" />
+<style>
+.topbar{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,5vw,56px)}
+.topbar .right{display:flex;align-items:center;gap:20px}
+.topbar .back{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.topbar .back:hover{color:#fff}
+main{position:relative;z-index:5;max-width:980px;margin:0 auto;padding:30px clamp(20px,5vw,40px) 100px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
+.hero h1{font-size:clamp(34px,6vw,58px);font-weight:800;letter-spacing:-.025em;line-height:1.05;margin:16px 0 0}
+.hero h1 .a{background:linear-gradient(90deg,#ff2d9b,#ff5a4d);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:clamp(17px,2vw,20px);line-height:1.6;margin:22px 0 0;max-width:62ch}
+.uc{scroll-margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:40px;margin:30px 0}
+.uc:nth-child(even) .uc-art{order:-1}
+@media (max-width:760px){.uc{grid-template-columns:1fr;gap:22px;padding:28px}.uc:nth-child(even) .uc-art{order:0}}
+.uc .num{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--pink);text-transform:uppercase}
+.uc h2{font-size:clamp(22px,3vw,30px);font-weight:800;letter-spacing:-.02em;margin:10px 0 0}
+.uc p{color:var(--faint);font-size:15.5px;line-height:1.72;margin:14px 0 0}
+.uc ul{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:10px}
+.uc li{display:flex;gap:10px;align-items:flex-start;color:var(--muted);font-size:14.5px;line-height:1.5}
+.uc li svg{width:18px;height:18px;flex:none;margin-top:1px;stroke:var(--pink);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.uc-art{aspect-ratio:4/3;border-radius:14px;border:1px solid var(--border);overflow:hidden;position:relative;
+  background:radial-gradient(120% 120% at 80% 10%,rgba(255,45,120,.14),transparent 55%),var(--bg-2,#0c0c0f)}
+.uc-art svg{position:absolute;inset:0;width:100%;height:100%}
+.cta-band{margin-top:46px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  background:linear-gradient(135deg,rgba(255,45,120,.1),var(--surface-1))}
+.cta-band h3{font-size:clamp(20px,2.6vw,26px);font-weight:800;letter-spacing:-.01em}
+.cta-band p{color:var(--faint);font-size:14px;margin-top:6px}
+.cta-band .row{display:flex;gap:12px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+<div class="ambient"><i class="a1"></i><i class="a2"></i></div>
+<div class="grain"></div>
+<div class="cursor-dot" id="cdot"></div>
+
+<header class="topbar">
+  <a class="logo" href="/" aria-label="Crescendo home">
+    <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"><line x1="17.3" y1="59.2" x2="37.6" y2="38.8"/><line x1="17.8" y1="76.9" x2="52.4" y2="42.2"/><line x1="35" y1="77.7" x2="82.1" y2="30.5"/><line x1="54.2" y1="79.2" x2="78.1" y2="55.5"/><line x1="55.5" y1="32.6" x2="61.7" y2="26.3"/><line x1="78.2" y1="20.4" x2="85" y2="13.6"/></svg>
+    CRESCENDO
+  </a>
+  <div class="right"><a class="back" href="/">← Back to site</a><a class="btn btn-primary" href="/checkout.html?plan=growth">Start free</a></div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">Use cases</span>
+    <h1>One tool, every way<br>you <span class="a">run a release.</span></h1>
+    <p class="lead">From a tight managed roster to a thousand-clip open pool, Crescendo tracks the posts, overlays the streams, and hands clients a link. Here is how teams put it to work.</p>
+  </section>
+
+  <!-- 1. UGC campaigns -->
+  <section class="glass uc" id="ugc-campaigns">
+    <div class="uc-body">
+      <div class="num">01 · UGC campaigns</div>
+      <h2>Run creator rosters without the spreadsheet.</h2>
+      <p>Brief a roster, drop in the posts, and Crescendo takes it from there. We auto-detect each creator's post, refresh views, likes, comments, and shares every day, and score every post for promotion-relevance, so you know which content is actually about the track and which is just noise. See per-creator and per-post performance, then kill the duds and scale the winners while the campaign is still live.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Auto-detect posts across TikTok, Instagram, YouTube, and X</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Daily refresh, plus a 30-day tail after the campaign wraps</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Per-creator and per-post breakdowns with relevance scoring</span></li>
+      </ul>
+    </div>
+    <div class="uc-art"><svg viewBox="0 0 200 150" preserveAspectRatio="none"><g stroke="#ff2d9b" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".9"><path d="M10 120 C40 110 60 70 90 80 S150 40 190 30"/></g><g stroke="#1ed760" stroke-width="2.2" fill="none" stroke-linecap="round" opacity=".85"><path d="M10 135 C45 128 65 100 95 104 S155 70 190 58"/></g></svg></div>
+  </section>
+
+  <!-- 2. Clipping -->
+  <section class="glass uc" id="clipping">
+    <div class="uc-body">
+      <div class="num">02 · Clipping</div>
+      <h2>Track a thousand clips, find the ten that mattered.</h2>
+      <p>Open-pool and clipping campaigns generate volume fast. Paste a batch of links or drop a CSV, and Crescendo scrapes the entire pool, ranks every clip by views and promotion-relevance, and surfaces the breakouts. Flip between an approved-creators view and the full open pool, then pay on performance and pour budget into what is already working.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Bulk import by paste or CSV, no manual entry</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Approved-versus-open-pool toggle for managed or mass posting</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Rank by views and relevance so you pay for results, not noise</span></li>
+      </ul>
+    </div>
+    <div class="uc-art"><svg viewBox="0 0 200 150" preserveAspectRatio="none"><g fill="#ff2d9b" opacity=".85"><rect x="14" y="92" width="13" height="44" rx="3"/><rect x="34" y="70" width="13" height="66" rx="3"/><rect x="54" y="104" width="13" height="32" rx="3"/><rect x="74" y="48" width="13" height="88" rx="3"/><rect x="94" y="84" width="13" height="52" rx="3"/></g><g fill="#1ed760" opacity=".8"><rect x="118" y="60" width="13" height="76" rx="3"/><rect x="138" y="96" width="13" height="40" rx="3"/><rect x="158" y="38" width="13" height="98" rx="3"/><rect x="178" y="78" width="13" height="58" rx="3"/></g></svg></div>
+  </section>
+
+  <!-- 3. Streaming lift -->
+  <section class="glass uc" id="streaming-lift">
+    <div class="uc-body">
+      <div class="num">03 · Streaming lift</div>
+      <h2>Prove the social push moved the streams.</h2>
+      <p>This is the whole point. Crescendo overlays Spotify and SoundCloud on the same timeline as your UGC, so you watch the posts go live, the views climb, and the streams follow a beat later, all on one chart. When a clip pops and saves spike two days later, the dates line up in front of you. We show correlation, not proof of causation, and we label it that way, because honest beats hand-wavy.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>UGC views and DSP streams on a single, shared timeline</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Spotify and SoundCloud overlay, refreshed daily</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Spikes and lead-lag called out, so the story tells itself</span></li>
+      </ul>
+    </div>
+    <div class="uc-art"><svg viewBox="0 0 200 150" preserveAspectRatio="none"><defs><linearGradient id="uf" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff2d9b" stop-opacity=".3"/><stop offset="1" stop-color="#ff2d9b" stop-opacity="0"/></linearGradient></defs><path d="M8 100 C40 96 60 60 92 66 S150 34 192 22 L192 150 L8 150 Z" fill="url(#uf)"/><path d="M8 100 C40 96 60 60 92 66 S150 34 192 22" stroke="#ff2d9b" stroke-width="2.6" fill="none" stroke-linecap="round"/><path d="M8 122 C44 118 64 92 96 96 S154 66 192 54" stroke="#1ed760" stroke-width="2.4" fill="none" stroke-linecap="round"/></svg></div>
+  </section>
+
+  <!-- 4. Client reporting -->
+  <section class="glass uc" id="client-reporting">
+    <div class="uc-body">
+      <div class="num">04 · Client reporting</div>
+      <h2>Send a link, not a deck.</h2>
+      <p>Stop rebuilding the same recap graph every Friday. Crescendo gives you white-label, read-only share links, so a client or label sees a clean, always-live dashboard of the work without ever touching your financials or your other accounts. Swap the logo, accent color, and footer per client, and let the numbers speak while you get your week back.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>White-label share links, your logo, accent, and footer</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Read-only by design, financials and other clients stay private</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M5 13l4 4L19 7"/></svg><span>Always live, so there is no more Friday-night export ritual</span></li>
+      </ul>
+    </div>
+    <div class="uc-art"><svg viewBox="0 0 200 150" preserveAspectRatio="none"><g opacity=".9"><rect x="22" y="26" width="156" height="20" rx="5" fill="rgba(255,255,255,.08)"/><rect x="22" y="56" width="70" height="68" rx="6" fill="rgba(255,45,120,.16)" stroke="rgba(255,45,120,.4)"/><rect x="100" y="56" width="78" height="30" rx="6" fill="rgba(255,255,255,.06)"/><rect x="100" y="94" width="78" height="30" rx="6" fill="rgba(30,215,96,.14)" stroke="rgba(30,215,96,.35)"/></g></svg></div>
+  </section>
+
+  <div class="glass cta-band">
+    <div><h3>Pick a lane, or run all four.</h3><p>Every plan does all of it. 2-day free trial, unlimited seats.</p></div>
+    <div class="row"><a class="btn btn-ghost btn-lg" href="/#pricing">See plans</a><a class="btn btn-primary btn-lg" href="/checkout.html?plan=growth">Start 2-day trial</a></div>
+  </div>
+</main>
+
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!matchMedia('(pointer:fine)').matches)return;
+  var dot=document.getElementById('cdot');
+  addEventListener('mousemove',function(e){dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';dot.style.opacity='1';},{passive:true});
+  addEventListener('mouseout',function(){dot.style.opacity='0';});
+})();
+</script>
+</body>
+</html>

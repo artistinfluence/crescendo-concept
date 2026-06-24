@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#08080a" />
+<meta name="robots" content="noindex" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<title>About — Crescendo</title>
+<link rel="stylesheet" href="/auth.css" />
+<style>
+.topbar{position:relative;z-index:5;display:flex;align-items:center;justify-content:space-between;padding:20px clamp(20px,5vw,56px)}
+.topbar .right{display:flex;align-items:center;gap:20px}
+.topbar .back{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
+.topbar .back:hover{color:#fff}
+main{position:relative;z-index:5;max-width:920px;margin:0 auto;padding:30px clamp(20px,5vw,40px) 100px}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--pink)}
+.hero h1{font-size:clamp(34px,6vw,60px);font-weight:800;letter-spacing:-.025em;line-height:1.04;margin:16px 0 0}
+.hero h1 .a{background:linear-gradient(90deg,#ff2d9b,#ff5a4d);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:clamp(17px,2vw,20px);line-height:1.6;margin:24px 0 0;max-width:60ch}
+.prose{margin:46px 0 0}
+.prose p{color:var(--faint);font-size:16px;line-height:1.78;margin:18px 0;max-width:66ch}
+.prose strong{color:#fff;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:54px 0}
+@media (max-width:720px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{padding:22px}
+.stat .n{font-size:32px;font-weight:800;letter-spacing:-.02em}
+.stat .n .a{background:linear-gradient(90deg,#ff2d9b,#ff5a4d);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .l{color:var(--faint);font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;margin-top:8px}
+.h2{font-size:clamp(24px,3.4vw,32px);font-weight:800;letter-spacing:-.02em;margin:18px 0 6px}
+.vals{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0 0}
+@media (max-width:720px){.vals{grid-template-columns:1fr}}
+.val{padding:24px}
+.val h3{font-size:17px;font-weight:800;margin-bottom:8px}
+.val h3 .dot{display:inline-block;width:7px;height:7px;border-radius:2px;background:var(--grad);margin-right:9px;vertical-align:middle}
+.val p{color:var(--faint);font-size:14.5px;line-height:1.65}
+.cta-band{margin-top:56px;padding:40px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;text-align:left;
+  background:linear-gradient(135deg,rgba(255,45,120,.1),var(--surface-1))}
+.cta-band h3{font-size:clamp(20px,2.6vw,26px);font-weight:800;letter-spacing:-.01em}
+.cta-band p{color:var(--faint);font-size:14px;margin-top:6px}
+.section{margin-top:58px}
+</style>
+</head>
+<body>
+<div class="ambient"><i class="a1"></i><i class="a2"></i></div>
+<div class="grain"></div>
+<div class="cursor-dot" id="cdot"></div>
+
+<header class="topbar">
+  <a class="logo" href="/" aria-label="Crescendo home">
+    <svg class="mark" viewBox="0 0 100 100" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"><line x1="17.3" y1="59.2" x2="37.6" y2="38.8"/><line x1="17.8" y1="76.9" x2="52.4" y2="42.2"/><line x1="35" y1="77.7" x2="82.1" y2="30.5"/><line x1="54.2" y1="79.2" x2="78.1" y2="55.5"/><line x1="55.5" y1="32.6" x2="61.7" y2="26.3"/><line x1="78.2" y1="20.4" x2="85" y2="13.6"/></svg>
+    CRESCENDO
+  </a>
+  <div class="right"><a class="back" href="/">← Back to site</a><a class="btn btn-primary" href="/checkout.html?plan=growth">Start free</a></div>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">About</span>
+    <h1>Built by the team that's<br>run <span class="a">4,000+ campaigns.</span></h1>
+    <p class="lead">Crescendo is the proof layer we wished we had. It comes from Artist Influence, the music marketing company that's spent years putting posts and streams in front of artists, and got tired of stitching the story together by hand.</p>
+  </section>
+
+  <section class="prose">
+    <p>Artist Influence started in <strong>2019</strong>, out of an NYU dorm, with a simple frustration: music marketing was loud on promises and quiet on proof. Our founder, <strong>Jared Rapoza</strong>, had just come from running Electronic &amp; Pop at Audiomack, and kept seeing the same gap, campaigns moved real numbers, but nobody could show it cleanly.</p>
+    <p>So we started running campaigns and measuring everything. Spotify playlisting, SoundCloud reposts, Instagram seeding, TikTok UGC, YouTube and Meta. Over <strong>4,000 campaigns</strong> later, we'd grown from an agency into a software company, but one thing never got easier: <strong>connecting the social push to the streaming response.</strong> Every recap meant exporting posts from four platforms, pasting in Spotify numbers, and building the same line graph by hand, again.</p>
+    <p>That spreadsheet became Crescendo. We took the thing we rebuilt for every client and made it live: every post and every stream on one timeline, updated daily, so you can finally <strong>see</strong> the correlation instead of describing it. It is the tool we needed as marketers, which is exactly who we built it for.</p>
+  </section>
+
+  <div class="stats">
+    <div class="glass stat"><div class="n">2019</div><div class="l">Founded · NYC</div></div>
+    <div class="glass stat"><div class="n"><span class="a">4,000+</span></div><div class="l">Campaigns delivered</div></div>
+    <div class="glass stat"><div class="n">7 yrs</div><div class="l">In the trenches</div></div>
+    <div class="glass stat"><div class="n">1</div><div class="l">Timeline for all of it</div></div>
+  </div>
+
+  <section class="section">
+    <span class="eyebrow">What we believe</span>
+    <div class="h2">Four principles, built into the product.</div>
+    <div class="vals">
+      <div class="glass val"><h3><span class="dot"></span>Platform-native</h3><p>TikTok, Instagram, YouTube, X, Spotify, and SoundCloud each behave differently. We track each the way it actually works, instead of forcing one generic metric.</p></div>
+      <div class="glass val"><h3><span class="dot"></span>Systems-first</h3><p>One connected system beats five disconnected vendors and a folder of CSVs. Crescendo replaces the patchwork with a single source of truth.</p></div>
+      <div class="glass val"><h3><span class="dot"></span>Outcome-driven</h3><p>Views are nice; streams pay rent. We tie social activity to the outcomes a release actually cares about, saves, plays, and streaming lift.</p></div>
+      <div class="glass val"><h3><span class="dot"></span>Transparent</h3><p>Clients should see what happened, not just hear about it. White-label share links give them a clean, honest read on the work, correlation, not causation, and we label it that way.</p></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <span class="eyebrow">Who it's for</span>
+    <div class="h2">Labels, managers, and the teams behind the breakouts.</div>
+    <p class="lead">We've run campaigns alongside major labels and independent artists across dance, electronic, and internet-native music. Crescendo is built for the people doing that work every day, marketers who need to prove the push moved the numbers, not just feel like it did.</p>
+  </section>
+
+  <div class="glass cta-band">
+    <div><h3>See the push become a crescendo.</h3><p>2-day free trial. Unlimited seats. No charge today.</p></div>
+    <a class="btn btn-primary btn-lg" href="/checkout.html?plan=growth">Start 2-day trial</a>
+  </div>
+</main>
+
+<script>
+(function(){
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches||!matchMedia('(pointer:fine)').matches)return;
+  var dot=document.getElementById('cdot');
+  addEventListener('mousemove',function(e){dot.style.left=e.clientX+'px';dot.style.top=e.clientY+'px';dot.style.opacity='1';},{passive:true});
+  addEventListener('mouseout',function(){dot.style.opacity='0';});
+})();
+</script>
+</body>
+</html>
