@@ -334,6 +334,17 @@ h1,h2,h3{margin:0;font-weight:800;text-transform:uppercase;letter-spacing:-.018e
 .ent-feats i{width:5px;height:5px;border-radius:50%;background:var(--red);display:block}
 .ent-r{flex:none}
 @media (max-width:640px){.enterprise{flex-direction:column;align-items:flex-start}.ent-r{width:100%}}
+/* Artist Influence cross-sell band */
+.boost-sec{padding:0 0 clamp(20px,4vw,40px)}
+.boost{display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap;padding:clamp(26px,3.5vw,36px) clamp(24px,4vw,42px);
+  background:linear-gradient(135deg,rgba(255,45,120,.1),rgba(30,215,96,.04),var(--surface-1))}
+.boost-l{max-width:64ch}
+.boost-l .eyebrow{color:var(--pink)}
+.boost-l h3{font-size:clamp(21px,2.9vw,30px);font-weight:800;letter-spacing:-.018em;margin:9px 0 0}
+.boost-l p{color:var(--faint);font-size:15px;line-height:1.62;margin:11px 0 0}
+.boost-l p a{color:#fff;text-decoration:underline;text-decoration-color:rgba(255,45,120,.6)}
+.boost .btn{flex:none}
+@media (max-width:680px){.boost{flex-direction:column;align-items:flex-start}.boost .btn{width:100%}}
 .tier .ribbon{position:absolute;top:22px;right:20px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#fff;
   background:var(--grad);padding:5px 11px;border-radius:999px;box-shadow:0 6px 18px -8px var(--glow)}
 .tier .t-name{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
@@ -464,7 +475,7 @@ h1,h2,h3{margin:0;font-weight:800;text-transform:uppercase;letter-spacing:-.018e
     <h1 class="reveal-load d2">Every post.<br>Every stream.<br>One <span class="accent">crescendo.</span></h1>
     <p class="sub reveal-load d3">The proof layer for music marketing. Track every post and every stream on one timeline, and finally see correlation that your UGC campaigns moved the numbers.</p>
     <div class="hero-cta reveal-load d4">
-      <a class="btn btn-primary btn-lg" href="checkout.html?plan=growth">Start 2-day trial</a>
+      <a class="btn btn-primary btn-lg" href="checkout.html?plan=growth">Start 3-day trial</a>
       <a class="btn btn-ghost btn-lg" href="#features">See it move</a>
     </div>
     <div class="hero-trust reveal-load d5">Built by marketers, for marketers.</div>
@@ -570,7 +581,7 @@ h1,h2,h3{margin:0;font-weight:800;text-transform:uppercase;letter-spacing:-.018e
     <div class="sec-head center r">
       <span class="eyebrow center">Pricing</span>
       <h2>Plans that scale with your <span class="accent">roster</span></h2>
-      <p class="lead">Every plan starts with a 2-day free trial and unlimited team seats. You are billed on active campaigns, not logins. Active campaigns refresh daily and keep tracking 30 days after they wrap, then auto-archive to free the slot.</p>
+      <p class="lead">Every plan starts with a 3-day free trial and unlimited team seats. You are billed on active campaigns, not logins. Active campaigns refresh daily and keep tracking 30 days after they wrap, then auto-archive to free the slot.</p>
     </div>
     <div class="tiers">
       <article class="glass tier r d1">
@@ -642,7 +653,7 @@ h1,h2,h3{margin:0;font-weight:800;text-transform:uppercase;letter-spacing:-.018e
       </div>
       <div class="ent-r"><a class="btn btn-primary btn-lg" href="/contact.html">Talk to us</a></div>
     </div>
-    <p class="pricing-note">2-day free trial · unlimited seats on every plan · billed monthly · cancel anytime · archive a campaign to free its slot</p>
+    <p class="pricing-note">3-day free trial · unlimited seats on every plan · billed monthly · cancel anytime · archive a campaign to free its slot</p>
   </div>
 </section>
 
@@ -651,8 +662,21 @@ h1,h2,h3{margin:0;font-weight:800;text-transform:uppercase;letter-spacing:-.018e
     <div class="glass cta-card r">
       <span class="eyebrow center" style="margin-bottom:18px">The work was always good. Now prove it.</span>
       <h2>Watch the push<br>become a <span class="accent">crescendo</span></h2>
-      <p>Import your first batch of links and watch the social posts and the streams build on one timeline. From the team behind campaigns for UMG, Warner and Atlantic. Two minutes to set up, a 2-day free trial, and no card to begin.</p>
-      <div class="hero-cta"><a class="btn btn-primary btn-lg" href="checkout.html?plan=growth">Start 2-day trial</a><a class="btn btn-ghost btn-lg" href="#pricing">See plans</a></div>
+      <p>Import your first batch of links and watch the social posts and the streams build on one timeline. From the team behind campaigns for UMG, Warner and Atlantic. Two minutes to set up, a 3-day free trial, and no card to begin.</p>
+      <div class="hero-cta"><a class="btn btn-primary btn-lg" href="checkout.html?plan=growth">Start 3-day trial</a><a class="btn btn-ghost btn-lg" href="#pricing">See plans</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="boost-sec">
+  <div class="wrap">
+    <div class="glass boost r">
+      <div class="boost-l">
+        <span class="eyebrow">Built by Artist Influence</span>
+        <h3>Need the boost, not just the proof?</h3>
+        <p>Crescendo measures the lift. <a href="https://www.artistinfluence.com" target="_blank" rel="noopener">Artist Influence</a>, the team behind it, can run the campaigns too, playlisting, UGC, clipping, and paid, with 4,000+ campaigns of reps behind it. Bring us the release; we will bring the push.</p>
+      </div>
+      <a class="btn btn-primary btn-lg" href="https://www.artistinfluence.com" target="_blank" rel="noopener">Work with Artist Influence ↗</a>
     </div>
   </div>
 </section>
@@ -669,10 +693,10 @@ h1,h2,h3{margin:0;font-weight:800;text-transform:uppercase;letter-spacing:-.018e
       </div>
       <div><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="checkout.html?plan=indie">Start free</a></li><li><a href="login.html">Log in</a></li></ul></div>
       <div><h4>Use cases</h4><ul><li><a href="/use-cases.html#ugc-campaigns">UGC campaigns</a></li><li><a href="/use-cases.html#clipping">Clipping</a></li><li><a href="/use-cases.html#streaming-lift">Streaming lift</a></li><li><a href="/use-cases.html#client-reporting">Client reporting</a></li></ul></div>
-      <div><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li></ul></div>
+      <div><h4>Company</h4><ul><li><a href="/about.html">About</a></li><li><a href="/contact.html">Contact</a></li><li><a href="https://www.artistinfluence.com" target="_blank" rel="noopener">Artist Influence ↗</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li></ul></div>
     </div>
     <div class="foot-bottom">
-      <small>Copyright 2026 Crescendo by Artist Influence. All rights reserved.</small>
+      <small>Copyright 2026 Crescendo by <a href="https://www.artistinfluence.com" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;text-decoration-color:var(--border-2)">Artist Influence</a>. All rights reserved.</small>
       <small style="color:#46464d">Concept / working name</small>
     </div>
   </div>
